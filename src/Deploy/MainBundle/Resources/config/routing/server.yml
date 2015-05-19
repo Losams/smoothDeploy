@@ -1,0 +1,30 @@
+server:
+    path:     /
+    defaults: { _controller: "DeployMainBundle:Server:index" }
+
+server_show:
+    path:     /{id}/show
+    defaults: { _controller: "DeployMainBundle:Server:show" }
+
+server_new:
+    path:     /new
+    defaults: { _controller: "DeployMainBundle:Server:new" }
+
+server_create:
+    path:     /create
+    defaults: { _controller: "DeployMainBundle:Server:create" }
+    methods:  POST
+
+server_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DeployMainBundle:Server:edit" }
+
+server_update:
+    path:     /{id}/update
+    defaults: { _controller: "DeployMainBundle:Server:update" }
+    methods:  [POST, PUT]
+
+server_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DeployMainBundle:Server:delete" }
+    methods:  [POST, DELETE]

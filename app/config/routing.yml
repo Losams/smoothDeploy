@@ -1,0 +1,10 @@
+deploy_user:
+    resource: "@DeployUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+deploy_main:
+    resource: "@DeployMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

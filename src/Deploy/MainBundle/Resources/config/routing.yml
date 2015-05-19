@@ -1,0 +1,23 @@
+deploy_main_server:
+    resource: "@DeployMainBundle/Resources/config/routing/server.yml"
+    prefix:   admin/server
+
+deploy_main_website:
+    resource: "@DeployMainBundle/Resources/config/routing/website.yml"
+    prefix:   admin/website
+
+deploy_main_homepage:
+    path:     /
+    defaults: { _controller: DeployMainBundle:Default:index }
+
+server_show_websites:
+    path:     /list/{id}
+    defaults: { _controller: "DeployMainBundle:Default:showWebsites" }
+
+deploy_api_pull:
+    path:     /website/pull/{id}
+    defaults: { _controller: DeployMainBundle:Api:index }
+
+deploy_api_check:
+    path:     /website/check/{id}
+    defaults: { _controller: DeployMainBundle:Api:check }

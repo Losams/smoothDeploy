@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <a href="{{path('deploy_main_homepage')}}" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+    </a>
+
+    <h1>Users <small>right</small></h1>
+    <hr>
+
+    <form action="#" method="post">
+        <table class="table table-hover">
+            <thead>
+                <th>#</th>
+                {% for id, user in users %}
+                    <th>
+                        <i class="fa fa-user"></i>
+                        {{ user }}
+                        <input type="hidden" name="rights[{{ id }}][]">
+                    </th>
+                {% endfor %}
+            </thead>
+            <tbody>
+                {% for server in rights %}
+                    <tr class='sup'>
+                        <td colspan={{ users|length + 1 }}>
+                            <i class="fa fa-server"></i>
+                            {{ server.name }}
+                        </td>
+                    </tr>
+                    {% for website_id, website in server.websites %}
+                    <tr>
+                        <td>
+                            <i class="fa fa-cube"></i>
+                            {{ website.name }}
+                        </td>
+                        {% for user_id, user in website.users %}
+                            <td>
+                                <input type="checkbox" value="1" {% if user.isIn %}checked{% endif %} name='rights[{{ user_id }}][{{ website_id }}]'>
+                            </td>                        
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div><button type="submit" class="btn btn-primary btn-submit pull-right">Enregistrer</button></div>
+    </form>
+
+</ul>
+{% endblock %}

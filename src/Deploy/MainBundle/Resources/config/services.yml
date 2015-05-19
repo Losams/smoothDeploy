@@ -1,0 +1,14 @@
+services:
+    deploy_main.sshLib:
+        class: Deploy\MainBundle\Service\SshLib
+        arguments: [ @service_container ]
+    deploy_main.securityLib:
+        class: Deploy\MainBundle\Service\SecurityLib
+        arguments: [ @service_container ]
+
+    # Form type
+    deploy_main.website.form.type:
+        class: Deploy\MainBundle\Form\WebsiteType
+        arguments:
+            securityLib: "@deploy_main.securityLib"
+    

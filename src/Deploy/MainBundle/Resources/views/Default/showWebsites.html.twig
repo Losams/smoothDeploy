@@ -1,0 +1,58 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+<a href="{{path('deploy_main_homepage')}}" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+</a>
+
+<h1>
+	<i class="fa fa-server"></i>
+	Server : {{server.name}} ({{server.ip}})
+</h1>
+
+<hr>
+
+<table id="listing" class="table table-striped table-bordered" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+			<th>Nom</th>
+			<th>Environment</th>
+			<th>Action</th>
+			<th>State</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for website in server.getWebsites() %}
+			<tr>
+				<td>
+					<i class="fa fa-cube"> - </i>
+					{{website.name}}
+				</td>
+				<td>{{website.environment.designation}}</td>
+				<td>
+					<a class="btn btn-primary btn-ssh confirm-deploy" href="{{ path('deploy_api_pull', { 'id': website.id }) }}">
+						<i class="fa fa-spinner fa-spin hide"></i>
+						{% trans %}Deploy ! (git pull){% endtrans %}
+					</a>
+					<a class="btn btn-info btn-check" href="{{ path('deploy_api_check', { 'id': website.id }) }}">
+						<i class="fa fa-spinner fa-spin hide"></i>
+						{% trans %}Check Stat{% endtrans %}
+					</a>
+				</td>
+				<td class='state-display'>
+					<div class="stat-display btn btn-default">
+						<i class="fa fa-question "></i>
+						<span class="text"></span>
+					</div>
+				</td>
+			</tr>    
+		{% endfor %}
+	</tbody>
+</table>
+		
+{% endblock %}
+
+{% block afterBody %}
+	{% include '::console.html.twig' %}
+{% endblock %}   

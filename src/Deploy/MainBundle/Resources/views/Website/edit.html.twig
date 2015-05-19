@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <a href="{{path('website')}}" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+    </a>
+
+    <h1>Website <small>edit</small></h1>
+    <hr>
+
+    {{ form(edit_form) }}
+</ul>
+{% endblock %}

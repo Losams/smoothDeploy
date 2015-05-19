@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Deploy Smooth !!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.css">
+        <link href="{{ asset('bundles/deploymain/css/main.css') }}" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/deploymain/css/sweet-alert.css') }}">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <header>
+            <div class="clearfix">
+                <div class="col-md-2">
+                    <a href="{{path('deploy_main_homepage')}}"><h1>Deploy Smooth</h1></a>   
+                </div>
+                {% if app.user %}
+                    <div class="col-md-6">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <ul>                           
+                                <li><a href="{{path('website')}}">Websites</a></li>
+                                <li><a href="{{path('server')}}">Servers</a></li>
+                                <li><a href="{{path('user')}}">Users</a></li>
+                            </ul>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{{ path('fos_user_security_logout') }}" class="logout">
+                             <i class="fa fa-power-off"></i>
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+            
+        </header>
+
+        <section id="core-page" class="col-md-8 col-md-offset-2">
+            {% for label, flashes in app.session.flashbag.all %}
+                {% for flash in flashes %}
+                    <div class="alert alert-{{ label }}">
+                        {{ flash }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            {% block body %}{% endblock %}   
+        </section>
+        
+        <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" language="javascript" src="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+        <script type="text/javascript" language="javascript" src="{{ asset('bundles/deploymain/js/interact.js') }}"></script>
+        <script src="{{ asset('bundles/deploymain/js/sweet-alert.min.js') }}"></script>
+
+        {% javascripts filter="" output="js/app.js" debug=true
+            "../app/Resources/public/js/app.js" %}
+            <script src="{{ asset_url }}" type="text/javascript"></script>
+        {% endjavascripts %}
+
+        {% block afterBody %}{% endblock %} 
+          
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,30 @@
+website:
+    path:     /
+    defaults: { _controller: "DeployMainBundle:Website:index" }
+
+website_show:
+    path:     /{id}/show
+    defaults: { _controller: "DeployMainBundle:Website:show" }
+
+website_new:
+    path:     /new
+    defaults: { _controller: "DeployMainBundle:Website:new" }
+
+website_create:
+    path:     /create
+    defaults: { _controller: "DeployMainBundle:Website:create" }
+    methods:  POST
+
+website_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DeployMainBundle:Website:edit" }
+
+website_update:
+    path:     /{id}/update
+    defaults: { _controller: "DeployMainBundle:Website:update" }
+    methods:  [POST, PUT]
+
+website_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DeployMainBundle:Website:delete" }
+    methods:  [POST, DELETE]

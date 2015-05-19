@@ -1,0 +1,83 @@
+header{
+	background-color: #123456;
+	line-height: 75px;
+}
+
+header h1{
+	color: #fff;
+	padding-left: 25px;	
+	margin-bottom: 20px;
+}
+
+h2 {
+	color: #123456;
+	text-transform: uppercase;
+	border-bottom: 1px solid #123456;
+}
+
+header li{
+	display: inline-block;
+	margin-right: 50px;
+	font-size: 25px;
+}
+
+header ul{
+	margin: 0;
+	padding: 0;
+}
+
+.logout {
+	float: right;
+}
+
+.encart-zone {
+	border: 5px solid #123456;
+	border-top: none;
+	padding: 15px;
+}
+
+tr.sup, .table > tbody > tr.sup td:hover {
+	background-color: #2A6496;
+	color: #fff;
+}
+
+#listing td {
+	line-height: 35px;
+}
+
+#listing_filter .form-control{
+	width: auto;
+}
+
+#core-page {
+	padding: 20px;  
+}
+
+.zone-term {
+	margin: 10px 0;
+	border-top: 1px #999 solid; 
+}
+
+.zone-term:first-child {
+	border: none;
+}
+
+#botSticky{
+	border-top: 10px #999 solid;
+	overflow: auto;
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	margin: 0px;
+	height: 200px;
+	padding: 0px 40px 0px 0px;
+	z-index: 7000000;
+	text-align: left;
+	bottom: 0px;
+	background-color: #000;
+	color: #fff;
+}
+
+.btn-submit {
+	margin-top: 20px;
+}
